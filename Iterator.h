@@ -12,6 +12,7 @@ public:
     virtual int get_index() const = 0;
 };
 
+
 template <typename T>
 bool operator==(const Iterator<T>& it1, const Iterator<T>& it2) {
     return it1.get_index() == it2.get_index();

@@ -67,7 +67,6 @@ public:
 };
 
 
-
 template <typename T>
 class Array_Iterator : public Iterator<T> {
     friend class Vector<T>;

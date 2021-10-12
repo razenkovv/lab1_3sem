@@ -27,7 +27,6 @@ public:
 };
 
 
-
 template<typename T>
 class ArraySequence : public Sequence<T> {
 private:

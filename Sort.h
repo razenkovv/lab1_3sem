@@ -256,6 +256,7 @@ bool check_sorted(Iterator<T>& b, Iterator<T>& e, int (*cmp) (const T&, const T&
 //    quick_sort_array(seq, start, len, cmp);
 //    quick_sort_array(seq, new_start, n - len, cmp);
 //}
+//
 //template <typename T>
 //void insert_sort(Sequence<T>& seq, int start, int n, int (*cmp) (const T&, const T&)) {
 //    if ((start + n > seq.size()) || (start < 0) || (n < 0))
