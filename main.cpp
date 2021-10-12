@@ -232,7 +232,155 @@ void enter_sequence() {
     std::cout << "\n";
 }
 
+void test_sort() {
+    std::cout << "Choose sort:\n1 - merge_sort\n2 - heap_sort\n3 - quick_sort\n4 - insert_sort\n";
+    int a;
+    std::cin >> a;
+    std::cout << "Enter amount of elements in sequence:\n";
+    unsigned int n;
+    std::cin >> n;
+    std::cout << "Enter amount of sequences:\n";
+    int k;
+    std::cin >> k;
+
+    switch (a) {
+        case 1: {
+            bool everything_is_good(true);
+            for (unsigned int b = 1; b <= k; ++b) {
+                std::default_random_engine gen(b);
+                std::uniform_int_distribution<int> distr(-10, 10);
+                ArraySequence<int> seq{n, 0};
+                for (int &it: seq) {
+                    it = distr(gen);
+                }
+                auto seq_ = seq.copy();
+                auto it1 = seq.begin();
+                auto it2 = seq.last();
+                merge_sort(it1, it2, cmp);
+                auto it1_ = seq.begin();
+                auto it2_ = seq.last();
+                if (!check_sorted(it1_, it2_, cmp)) {
+                    std::cout << "Error in test " << b << ".\n";
+                    seq_->print(); //sequence до сортировки
+                    seq.print(); //sequence после сортировки
+                    std::cout << "\n";
+                    everything_is_good = false;
+                }
+                seq_->print();
+                seq.print();
+                std::cout << "\n";
+            }
+            if (everything_is_good)
+                std::cout << "\nNo errors.\n";
+            break;
+        }
+
+        case 2: {
+            bool everything_is_good(true);
+            for (unsigned int b = 1; b <= k; ++b) {
+                std::default_random_engine gen(b);
+                std::uniform_int_distribution<int> distr(-10, 10);
+                ArraySequence<int> seq{n, 0};
+                for (int &it: seq) {
+                    it = distr(gen);
+                }
+                auto seq_ = seq.copy();
+                auto it1 = seq.begin();
+                auto it2 = seq.last();
+                heap_sort(it1, it2, cmp);
+                auto it1_ = seq.begin();
+                auto it2_ = seq.last();
+                if (!check_sorted(it1_, it2_, cmp)) {
+                    std::cout << "Error in test " << b << ".\n";
+                    seq_->print(); //sequence до сортировки
+                    seq.print(); //sequence после сортировки
+                    std::cout << "\n";
+                    everything_is_good = false;
+                }
+                seq_->print();
+                seq.print();
+                std::cout << "\n";
+            }
+            if (everything_is_good)
+                std::cout << "\nNo errors.\n";
+            break;
+        }
+
+        case 3: {
+            bool everything_is_good(true);
+            for (unsigned int b = 1; b <= k; ++b) {
+                std::default_random_engine gen(b);
+                std::uniform_int_distribution<int> distr(-10, 10);
+                ArraySequence<int> seq{n, 0};
+                for (int &it: seq) {
+                    it = distr(gen);
+                }
+                auto seq_ = seq.copy();
+                auto it1 = seq.begin();
+                auto it2 = seq.last();
+                quick_sort(it1, it2, cmp);
+                auto it1_ = seq.begin();
+                auto it2_ = seq.last();
+                if (!check_sorted(it1_, it2_, cmp)) {
+                    std::cout << "Error in test " << b << ".\n";
+                    seq_->print(); //sequence до сортировки
+                    seq.print(); //sequence после сортировки
+                    std::cout << "\n";
+                    everything_is_good = false;
+                }
+                seq_->print();
+                seq.print();
+                std::cout << "\n";
+            }
+            if (everything_is_good)
+                std::cout << "\nNo errors.\n";
+            break;
+        }
+
+        case 4: {
+            bool everything_is_good(true);
+            for (unsigned int b = 1; b <= k; ++b) {
+                std::default_random_engine gen(b);
+                std::uniform_int_distribution<int> distr(-10, 10);
+                ArraySequence<int> seq{n, 0};
+                for (int &it: seq) {
+                    it = distr(gen);
+                }
+                auto seq_ = seq.copy();
+                auto it1 = seq.begin();
+                auto it2 = seq.last();
+                insert_sort(it1, it2, cmp);
+                auto it1_ = seq.begin();
+                auto it2_ = seq.last();
+                //
+//                if (b == 5) { //проверка - специально ломается какой-то sequence
+//                    *it1_ = 1;
+//                    *it2_ = 0;
+//                }
+                //
+                if (!check_sorted(it1_, it2_, cmp)) {
+                    std::cout << "Error in test " << b << ".\n";
+                    seq_->print(); //sequence до сортировки
+                    seq.print(); //sequence после сортировки
+                    std::cout << "\n";
+                    everything_is_good = false;
+                }
+                seq_->print();
+                seq.print();
+                std::cout << "\n";
+            }
+            if (everything_is_good)
+                std::cout << "\nNo errors.\n";
+            break;
+        }
+
+        default:
+            break;
+    }
+}
+
 int main() {
     //test_time();
-    enter_sequence();
+    //enter_sequence();
+    test_sort();
 }
